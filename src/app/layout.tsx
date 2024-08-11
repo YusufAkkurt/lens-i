@@ -6,10 +6,10 @@ const poppins = Poppins({ subsets: ['latin-ext'], weight: '400' });
 
 export const metadata: Metadata = {
 	title: {
-		template: '%s | lens-i',
+		template: '%s - lens-i',
 		default: 'lens-i'
 	},
-	description: 'The social media app for poor turks :('
+	description: 'The social media app for turks :('
 };
 
 export default function RootLayout({
