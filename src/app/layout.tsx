@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
+import { Poppins } from 'next/font/google';
 import './globals.css';
 
 const poppins = Poppins({ subsets: ['latin-ext'], weight: '400' });
@@ -19,14 +19,9 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning>
 			<body className={`${poppins.className} flex flex-col min-h-lvh bg-secondary`}>
-				<ThemeProvider
-					attribute={'class'}
-					defaultTheme="system"
-					themes={['system', 'dark', 'light']}
-					enableSystem={true}
-					disableTransitionOnChange={true}>
+				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 					{children}
 				</ThemeProvider>
 			</body>

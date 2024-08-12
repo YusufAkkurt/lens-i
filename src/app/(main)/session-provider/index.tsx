@@ -12,10 +12,7 @@ type SessionContextType = {
 const SessionContext = createContext<SessionContextType | null>(null);
 
 export const SessionProvider = ({ children, value }: React.PropsWithChildren<{ value: SessionContextType }>) => (
-	<SessionContext.Provider value={value}>
-		<Header />
-		<main className="container">{children}</main>
-	</SessionContext.Provider>
+	<SessionContext.Provider value={value}>{children}</SessionContext.Provider>
 );
 
 export function useSession() {
