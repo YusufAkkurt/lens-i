@@ -22,7 +22,7 @@ export const SearchField = () => {
 			}}
 			className="max-w-[25rem] w-full">
 			<div className="relative">
-				<Input name="q" placeholder="Search" className="ps-10 bg-primary-foreground" />
+				<Input name="q" placeholder="Search" className="ps-10 bg-secondary" />
 				<SearchIcon className="size-5 absolute start-3 top-1/2 -translate-y-1/2 transform text-muted-foreground" />
 			</div>
 		</form>

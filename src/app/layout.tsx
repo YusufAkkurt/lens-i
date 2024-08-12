@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
+import { ThemeProvider } from 'next-themes';
 import './globals.css';
 
 const poppins = Poppins({ subsets: ['latin-ext'], weight: '400' });
@@ -19,7 +20,16 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${poppins.className} flex flex-col min-h-lvh bg-primary-foreground`}>{children}</body>
+			<body className={`${poppins.className} flex flex-col min-h-lvh bg-secondary`}>
+				<ThemeProvider
+					attribute={'class'}
+					defaultTheme="system"
+					themes={['system', 'dark', 'light']}
+					enableSystem={true}
+					disableTransitionOnChange={true}>
+					{children}
+				</ThemeProvider>
+			</body>
 		</html>
 	);
 }
