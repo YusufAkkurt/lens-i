@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function Page() {
 	return (
 		<main className="h-lvh grid place-items-center p-5">
-			<section className="grid md:grid-cols-2 h-full max-h-[40rem] w-full max-w-[64rem] overflow-hidden rounded-2xl bg-card shadow-2xl">
+			<section className="grid md:grid-cols-2 h-full max-h-[40rem] w-full max-w-[64rem] overflow-hidden rounded-xl bg-card shadow-2xl">
 				<div className="p-10 w-full h-full overflow-y-auto">
 					<h1 className="text-3xl font-bold text-center">
 						Login to lens<span className="text-primary">-i</span>

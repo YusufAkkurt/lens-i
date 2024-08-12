@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 import { Poppins } from 'next/font/google';
 import './globals.css';
+import { Toaster } from '@/components/ui/toaster';
 
 const poppins = Poppins({ subsets: ['latin-ext'], weight: '400' });
 
@@ -24,6 +25,8 @@ export default function RootLayout({
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 					{children}
 				</ThemeProvider>
+
+				<Toaster />
 			</body>
 		</html>
 	);
