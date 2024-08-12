@@ -19,7 +19,7 @@ export default async function Layout({ children }: Props) {
 			<Header />
 
 			<main className="container flex gap-5 grow">
-				<MenuBar className="sticky top-[5.25rem] h-fit hidden sm:block flex-none my-3 rounded-xl bg-card px-3 py-5 lg:px-5 shadow-sm xl:w-80" />
+				<MenuBar className="sticky top-[5.2rem] h-fit hidden sm:block flex-none my-3 rounded-xl bg-card px-3 py-5 lg:px-5 shadow-sm xl:w-80" />
 				<section className="p-5 w-full">{children}</section>
 			</main>
 
