@@ -15,3 +15,7 @@ export function formatRelativeDate(from: Date) {
 
 	return formatDate(from, 'MMM d, yyyy');
 }
+
+export function formatCount(count: number) {
+	return Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 }).format(count);
+}

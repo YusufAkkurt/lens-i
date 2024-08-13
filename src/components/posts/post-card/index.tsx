@@ -17,7 +17,7 @@ export const PostCard: FC<Props> = ({ post }) => {
 				</Link>
 
 				<div>
-					<Link href={`/users/${post.user.username}`} className="block font-medium hover:underline">
+					<Link href={`/users/${post.user.username}`} className="block font-semibold hover:underline">
 						{post.user.username}
 					</Link>
 

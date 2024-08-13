@@ -1,15 +1,14 @@
 'use client';
 
 import { useSession } from '@/app/(main)/session-provider';
-import { Button } from '@/components/ui/button';
+import { LoadingButton } from '@/components/loading-button';
 import { UserAvatar } from '@/components/user-avatar';
-import { Placeholder } from '@tiptap/extension-placeholder';
+import Placeholder from '@tiptap/extension-placeholder';
 import { EditorContent, useEditor } from '@tiptap/react';
-import { StarterKit } from '@tiptap/starter-kit';
+import StarterKit from '@tiptap/starter-kit';
+import { useTransition } from 'react';
 import { submitPost } from '../actions';
 import './styles.css';
-import { LoadingButton } from '@/components/loading-button';
-import { useTransition } from 'react';
 
 export const PostEditor = () => {
 	const { user } = useSession();
@@ -20,7 +19,8 @@ export const PostEditor = () => {
 		extensions: [
 			StarterKit.configure({ bold: false, italic: false }),
 			Placeholder.configure({ placeholder: 'Share what you want them to hear?' })
-		]
+		],
+		immediatelyRender: false
 	});
 
 	const input = (edior?.getText({ blockSeparator: '\n' }) || '').trim();
