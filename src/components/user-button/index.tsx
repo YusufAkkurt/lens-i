@@ -20,6 +20,7 @@ import { CheckIcon, LogOutIcon, MonitorIcon, MoonIcon, SunIcon, UserIcon } from 
 import { logout } from '@/app/(auth)/actions';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
+import { useQueryClient } from '@tanstack/react-query';
 
 type Props = Partial<{
 	className: string;
@@ -27,6 +28,8 @@ type Props = Partial<{
 
 export const UserButton: FC<Props> = ({ className }) => {
 	const { user } = useSession();
+
+	const queryClient = useQueryClient();
 
 	const { theme, setTheme } = useTheme();
 
@@ -81,7 +84,12 @@ export const UserButton: FC<Props> = ({ className }) => {
 
 				<DropdownMenuSeparator />
 
-				<DropdownMenuItem onClick={() => logout()} className="cursor-pointer">
+				<DropdownMenuItem
+					onClick={() => {
+						queryClient.clear();
+						logout();
+					}}
+					className="cursor-pointer">
 					<LogOutIcon className="mr-2 size-4" />
 					Logout
 				</DropdownMenuItem>

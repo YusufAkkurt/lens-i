@@ -3,6 +3,7 @@ import { ThemeProvider } from 'next-themes';
 import { Poppins } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
+import { ReactQueryProvider } from './react-query-provider';
 
 const poppins = Poppins({ subsets: ['latin-ext'], weight: '400' });
 
@@ -22,11 +23,13 @@ export default function RootLayout({
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<body className={`${poppins.className} flex flex-col min-h-lvh bg-secondary`}>
-				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-					{children}
-				</ThemeProvider>
+				<ReactQueryProvider>
+					<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+						{children}
+					</ThemeProvider>
 
-				<Toaster />
+					<Toaster />
+				</ReactQueryProvider>
 			</body>
 		</html>
 	);
