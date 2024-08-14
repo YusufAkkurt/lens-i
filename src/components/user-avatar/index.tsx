@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
-import Image from 'next/image';
 import avatarPlaceholder from '@/assets/avatar-placeholder.svg';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
+import { FC } from 'react';
 
 type Props = Partial<{
 	avatarUrl: string | null;
@@ -12,6 +12,7 @@ type Props = Partial<{
 export const UserAvatar: FC<Props> = ({ avatarUrl, size, className }) => {
 	return (
 		<Image
+			priority
 			src={avatarUrl || avatarPlaceholder}
 			width={size || 48}
 			height={size || 48}

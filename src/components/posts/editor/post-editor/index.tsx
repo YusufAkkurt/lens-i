@@ -9,11 +9,12 @@ import StarterKit from '@tiptap/starter-kit';
 import { useTransition } from 'react';
 import { submitPost } from '../actions';
 import './styles.css';
+import { useSubmitFormMutation } from '../use-submit-mutation';
 
 export const PostEditor = () => {
 	const { user } = useSession();
 
-	const [isPending, setTransition] = useTransition();
+	const mutation = useSubmitFormMutation();
 
 	const edior = useEditor({
 		extensions: [
@@ -35,14 +36,13 @@ export const PostEditor = () => {
 			<div className="flex justify-end">
 				<LoadingButton
 					className="min-w-20"
-					loading={isPending}
+					loading={mutation.isPending}
 					disabled={!input}
-					onClick={() =>
-						setTransition(async () => {
-							await submitPost(input);
-							edior?.commands.clearContent();
-						})
-					}>
+					onClick={async () => {
+						await mutation.mutateAsync(input, {
+							onSuccess: () => edior?.commands.clearContent()
+						});
+					}}>
 					Post
 				</LoadingButton>
 			</div>
