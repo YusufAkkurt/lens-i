@@ -6,10 +6,8 @@ import { UserAvatar } from '@/components/user-avatar';
 import Placeholder from '@tiptap/extension-placeholder';
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import { useTransition } from 'react';
-import { submitPost } from '../actions';
-import './styles.css';
 import { useSubmitFormMutation } from '../use-submit-mutation';
+import './styles.css';
 
 export const PostEditor = () => {
 	const { user } = useSession();
