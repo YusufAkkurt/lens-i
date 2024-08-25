@@ -1,6 +1,6 @@
 import { validateRequest } from '@/auth';
 import prisma from '@/lib/prisma';
-import { userDataSelect } from '@/lib/types';
+import { getUserDataSelect } from '@/lib/types';
 import { unstable_cache } from 'next/cache';
 
 export async function getUsersToFollow(count: number) {
@@ -8,7 +8,11 @@ export async function getUsersToFollow(count: number) {
 
 	if (!user) return [];
 
-	const users = await prisma.user.findMany({ where: { NOT: { id: user.id } }, select: userDataSelect, take: count });
+	const users = await prisma.user.findMany({
+		where: { NOT: { id: user.id }, followers: { none: { followerId: user.id } } },
+		select: getUserDataSelect(user.id),
+		take: count
+	});
 
 	return users;
 }

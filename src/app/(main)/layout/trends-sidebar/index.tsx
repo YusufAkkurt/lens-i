@@ -1,10 +1,10 @@
-import { Button } from '@/components/ui/button';
+import { FollowButton } from '@/components/follow-button';
 import { UserAvatar } from '@/components/user-avatar';
+import { formatCount } from '@/lib/utils';
 import { Loader2Icon } from 'lucide-react';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { getTrendingTopics, getUsersToFollow } from './actions';
-import { formatCount } from '@/lib/utils';
 
 export const TrendsSidebar = () => {
 	return (
@@ -20,6 +20,7 @@ export const TrendsSidebar = () => {
 
 async function WhoToFollow() {
 	const usersToFollow = await getUsersToFollow(5);
+	
 
 	return (
 		<div className="grid gap-y-5 rounded-xl bg-card p-5 shadow-sm">
@@ -36,7 +37,13 @@ async function WhoToFollow() {
 						</div>
 					</Link>
 
-					<Button>Follow</Button>
+					<FollowButton
+						userId={_user.id}
+						initialState={{
+							followers: _user._count.followers,
+							isFollowedByUser: _user.followers.some(({ followerId }) => followerId === _user.id)
+						}}
+					/>
 				</div>
 			))}
 		</div>
